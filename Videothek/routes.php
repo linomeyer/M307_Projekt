@@ -3,5 +3,6 @@
 $router = new Router();
 
 $router->define([
-    '' => 'app/Controllers/WelcomeController.php'
+    '' => 'app/Controllers/WelcomeController.php',
+    'auftrag-erfassen' => 'app/Controllers/CaptureController.php'
 ]);
