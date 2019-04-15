@@ -1,5 +1,5 @@
 <?php
-require 'core/database.php';
+
 class Tenant {
     public $name;
     public $firstname;
