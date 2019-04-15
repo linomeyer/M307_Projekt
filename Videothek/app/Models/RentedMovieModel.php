@@ -1,13 +1,22 @@
 <?php
 class RentedMovie {
-    public $fk_movieID;
-    public $fk_tenantID;
+    public $id;
     public $rentStart;
 
-    function __construct($fk_movieID, $fk_tenantID, $rentStart)
+    public $name;
+    public $firstname;
+    public $email;
+    public $telNr;
+    public $fk_memberstatus;
+
+    function __construct($rentStart, $name, $firstname, $email, $fk_memberstatus, $telNr = null, $id = null)
     {
-        $this->fk_movieID = $fk_movieID;
-        $this->fk_tenantID = $fk_tenantID;
+        $this->id = $id;
         $this->rentStart = $rentStart;
+        $this->name = $name;
+        $this->firstname = $firstname;
+        $this->email = $email;
+        $this->fk_memberstatus = $fk_memberstatus;
+        $this->telNr = $telNr;
     }
 }

@@ -6,4 +6,4 @@ require 'core/Router.php';
 
 require 'app/Models/MovieModel.php';
 require 'app/Models/MemberModel.php';
-require 'app/Models/TenantModel.php';
+require 'app/Models/RentedMovieModel.php';

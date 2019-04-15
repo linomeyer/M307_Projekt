@@ -5,7 +5,7 @@ class Member {
 
     function __construct($status, $rentDuration)
     {
-        $this->status;
-        $this->rentDuration;
+        $this->status = $status;
+        $this->rentDuration = $rentDuration;
     }
 }
