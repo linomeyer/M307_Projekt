@@ -9,7 +9,7 @@ class RentedMovie {
     public $telNr;
     public $fk_memberstatus;
 
-    function __construct($id, $rentStart, $name, $firstname, $email, $fk_memberstatus, $telNr = null)
+    function __construct($rentStart, $name, $firstname, $email, $fk_memberstatus, $telNr = null, $id = null)
     {
         $this->id = $id;
         $this->rentStart = $rentStart;
