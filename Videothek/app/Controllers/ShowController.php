@@ -1,4 +1,5 @@
 <?php
+require 'app/Views/navbar.view.php';
 
 $name = '';
 $email= '';

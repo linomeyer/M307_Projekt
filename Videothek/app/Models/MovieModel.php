@@ -22,4 +22,27 @@ class Movie {
             echo 'Verbindung zur DB fehlgeschlagen: ' . $e;
         }
     }
+
+    public function getAllMovieIds(){
+        try {
+            $pdo = connectToDatabase();
+            $statement = $pdo->prepare("SELECT id FROM movie");
+            $statement->execute();
+            return $statement->fetchAll();
+        } catch(PDOException $e) {
+            echo 'Verbindung zur DB fehlgeschlagen: ' . $e;
+        }
+    }
+
+    public function getMoviebyId(int $id){
+        try {
+            $pdo = connectToDatabase();
+            $statement = $pdo->prepare("SELECT * FROM movie WHERE id = :id");
+            $statement->bindParam(':id', $id);
+            $statement->execute();
+            return $statement->fetch();
+        } catch(PDOException $e) {
+            echo 'Verbindung zur DB fehlgeschlagen: ' . $e;
+        }
+    }
 }

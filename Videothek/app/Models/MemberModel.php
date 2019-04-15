@@ -8,4 +8,6 @@ class Member {
         $this->status = $status;
         $this->rentDuration = $rentDuration;
     }
+
+
 }
