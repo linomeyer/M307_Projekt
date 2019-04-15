@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="public/css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-    <title>Erfassen</title>
+    <title>Bearbeiten</title>
 </head>
 <body>
 
@@ -65,7 +65,7 @@
             </div>
 
         </fieldset>
-
+        <br>
         <fieldset>
             <legend>Ausleih Details</legend>
 
@@ -79,8 +79,9 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="enddate">Ausleihe Enddatum:</label>
-                <input class="form-control" type="text" id="enddate" name="enddate" readonly>
+                <label class="form-label" for="enddate">Ausleihe Status:</label><br>
+                <input type="radio" name="rent-status" value="in rent"> Das Video ist ausgeliehen.<br>
+                <input type="radio" name="rent-status" value="in not rent"> Das Video wurde zurückgebracht.<br>
             </div>
 
         </fieldset>
