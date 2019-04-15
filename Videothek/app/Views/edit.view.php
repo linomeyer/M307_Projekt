@@ -56,7 +56,7 @@
 
             <div class="form-group">
                 <label class="form-label" for="member-status">Mitgliedschaftsstatus:</label><p class="required-star"> *</p>
-                <select class="form-control" id="member-status" name="member-status">
+                <select class="form-control" id="member-status" name="member-status" disabled>
                     <option value="">Keine</option>
                     <option value="Bronze">Bronze</option>
                     <option value="Silber">Silber</option>
@@ -79,8 +79,8 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label" for="enddate">Ausleihe Status:</label><br>
-                <input type="radio" name="rent-status" value="in rent"> Das Video ist ausgeliehen.<br>
+                <label class="form-label" for="enddate">Ausleihe Status:</label><p class="required-star"> *</p><br>
+                <input type="radio" name="rent-status" value="in rent" checked> Das Video ist ausgeliehen.<br>
                 <input type="radio" name="rent-status" value="in not rent"> Das Video wurde zurückgebracht.<br>
             </div>
 
