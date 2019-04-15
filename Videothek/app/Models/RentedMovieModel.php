@@ -19,4 +19,6 @@ class RentedMovie {
         $this->fk_memberstatus = $fk_memberstatus;
         $this->telNr = $telNr;
     }
+
+    
 }
