@@ -32,7 +32,7 @@
     <form method="post" id="formular">
 
         <fieldset>
-            <legend>Person</legend>
+            <legend>Personelle Informationen</legend>
 
             <div class="form-group">
                 <label for="name" class="form-label">Name:</label><p class="required-star"> *</p>
@@ -40,8 +40,8 @@
             </div>
 
             <div class="form-group">
-                <label for="name" class="form-label">Vorname:</label><p class="required-star"> *</p>
-                <input class="form-control" type="text" id="name" name="name" required value="<?= e($vorname) ?>">
+                <label for="firstname" class="form-label">Vorname:</label><p class="required-star"> *</p>
+                <input class="form-control" type="text" id="firstname" name="firstname" required value="<?= e($vorname) ?>">
             </div>
 
             <div class="form-group">
