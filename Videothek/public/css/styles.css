@@ -1,0 +1,37 @@
+html, body {
+    height: 100%;
+    /*background-image: url("../images/background.jpg");*/
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.wrapper {
+    max-width: 700px;
+    margin: 2em auto 0;
+    min-height: 70%;
+    background-color: white;
+    padding: 10px;
+}
+
+.table-button {
+    height: 32px;
+}
+
+.icon {
+    width: 23px;
+    height: 23px;
+}
+
+.required-star {
+    color: darkred;
+    display: inline-block;
+}
+
+.input-container {
+    margin-top: 20px;
+}
+
+.icon {
+    width: 23px;
+    height: 23px;
+}
