@@ -32,7 +32,7 @@ class RentedMovie {
         }
     }
 
-    public function createRent(string $name, string $vorname, string $email, string $telnr, string $rentstart, int $film, int $member, bool $rentstatus, bool $active, string $rentend){
+    static function createRent(string $name, string $vorname, string $email, string $telnr, string $rentstart, int $film, int $member, bool $rentstatus, bool $active, string $rentend){
         try {
             $pdo = connectToDatabase();
             $statement = $pdo->prepare("INSERT INTO rentmovie (`name`, firstname, email, telNr, rentStart, fk_movieID, fk_memberstatus, rentstatus, active, rentend) VALUES (:namme, :firstname, :email, :telNr, :rentStart, :movieId, :memberstatus, :rentstatus, :active, :rentend)");

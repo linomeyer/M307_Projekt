@@ -19,8 +19,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $member = $_POST['memberstatus'] ?? '';
         $video = $_POST['video'] ?? '';
         $enddatum = $_POST['enddate'] ?? '';
+        $rentstart = date("d.m.Y");
 
         $errors = validate($name, $firstname, $email, $phone, $member, $video);
+
+        RentedMovie::createRent($name, $firstname, $email, $phone, $rentstart, $video, $member, $member, 1, $enddatum);
     }
 }
 
