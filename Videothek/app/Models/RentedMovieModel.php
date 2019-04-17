@@ -97,7 +97,7 @@ class RentedMovie {
     public function deleteRent(int $movieId){
         try {
             $pdo = connectToDatabase();
-            $statement = $pdo->prepare("ALTER TABLE rentmovie SET active = false WHERE id = :id");
+            $statement = $pdo->prepare("UPDATE rentmovie SET active = 0 WHERE id = :id");
             $statement->bindParam(':id', $movieId);
             $statement->execute();
             return $statement->fetch();
