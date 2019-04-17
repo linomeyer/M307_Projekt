@@ -10,7 +10,7 @@ function validate(string $name, string $firstname, string $email, string $telefo
     if (trim($name) === '') {
         array_push($errors, 'Nachamensfeld ist leer!');
     }
-    if (strlen($name) <= 2) {
+    elseif (strlen($name) <= 2) {
         array_push($errors, 'Der Name muss länger als 2 Zeichen sein!');
     }
     if (trim($firstname) === '') {
@@ -19,7 +19,7 @@ function validate(string $name, string $firstname, string $email, string $telefo
     if (trim($email) === '') {
         array_push($errors, 'Emailfeld ist leer!');
     }
-    if (!preg_match($regex, strtolower($email))) {
+    elseif (!preg_match($regex, strtolower($email))) {
         array_push($errors, 'Email ist nicht gültig!');
     }
     if (strpos($email, "google.com")) {
@@ -30,6 +30,9 @@ function validate(string $name, string $firstname, string $email, string $telefo
     }
     if (!in_array($memberStatus, $allMemberStatuses)) {
         array_push($errors, 'Der Ausgewählte Mitgliedschaftsstatus existiert nicht!');
+    }
+    if (!in_array()){
+        array_push($errors, 'Der Ausgewählte Film existiert nicht!');
     }
     return $errors;
 }
