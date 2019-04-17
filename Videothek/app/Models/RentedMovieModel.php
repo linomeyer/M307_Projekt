@@ -1,6 +1,6 @@
 <?php
 class RentedMovie {
-    public $id;
+    public $movieId;
 
     public $name;
     public $firstname;
@@ -9,9 +9,9 @@ class RentedMovie {
     public $fk_memberstatus;
     public $active;
 
-    function __construct($name, $firstname, $email, $fk_memberstatus, $active, $telNr = null, $id = null)
+    function __construct($name, $firstname, $email, $fk_memberstatus, $active, $telNr = null, $movieId = null)
     {
-        $this->id = $id;
+        $this->movieId = $movieId;
         $this->name = $name;
         $this->firstname = $firstname;
         $this->email = $email;
@@ -31,11 +31,11 @@ class RentedMovie {
         }
     }
 
-    static function getRentbyId(int $id){
+    static function getRentbyId(int $movieId){
         try {
             $pdo = connectToDatabase();
             $statement = $pdo->prepare("SELECT * FROM rentmovie WHERE id = :id");
-            $statement->bindParam(':id', $id);
+            $statement->bindParam(':id', $movieId);
             $statement->execute();
             return $statement->fetch();
         } catch(PDOException $e) {
@@ -61,18 +61,16 @@ class RentedMovie {
         }
     }
 
-    static function updateRent($name, $firstname, $email, $phone, $movie, $rentstatus, $id){
+    public function updateRent(){
         try {
             $pdo = connectToDatabase();
             $statement = $pdo->prepare("UPDATE rentmovie set `name` = :namme, 
-                                                                        firstname = :firstname, 
-                                                                        email = :email,
-                                                                        telNr = :phone,
-                                                                        fk_movieID = :movie,
-                                                                        rentstatus = :rentstatus
-                                                                        WHERE id = :id");
-            $statement->bindParam(':id', $id);
-            $statement->bindParam(':rentstatus', $rentstatus);
+                                        firstname = :firstname, 
+                                        email = :email,
+                                        telNr = :phone,
+                                        fk_movieID = :movie,
+                                        WHERE id = :id");
+            $statement->bindParam(':id', $movieId);
             $statement->bindParam(':movie', $movie);
             $statement->bindParam(':phone', $phone);
             $statement->bindParam(':email', $email);
@@ -86,11 +84,11 @@ class RentedMovie {
         }
     }
 
-    static function deleteRent(int $id){
+    static function deleteRent(int $movieId){
         try {
             $pdo = connectToDatabase();
             $statement = $pdo->prepare("ALTER TABLE rentmovie SET active = 0 WHERE id = :id");
-            $statement->bindParam(':id', $id);
+            $statement->bindParam(':id', $movieId);
             $statement->execute();
             return $statement->fetch();
         } catch(PDOException $e) {
