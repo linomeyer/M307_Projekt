@@ -16,7 +16,7 @@ inputForm.addEventListener("submit", function(e) {
     }
     if(document.querySelector('#email').value.trim() == '') {
         errors.push('Das Email-Feld ist ein Pflichtfeld und darf nicht leer sein!');
-    } else if(!emailRegex.test(document.querySelector('#email').value.toLowerCase())) {
+    } else if(emailRegex.test(document.querySelector('#email').value.toLowerCase())) {
         errors.push('Es muss eine gültige Email eingegeben werden!');
     }
     if(phoneRegex.test(document.querySelector('#phone').value)) {
