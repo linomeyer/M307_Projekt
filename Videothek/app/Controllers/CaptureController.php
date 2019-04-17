@@ -25,7 +25,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $errors = validate($name, $firstname, $email, $phone, $member, $video);
 
         if(count($errors) === 0) {
-            $rentedMovie = new RentedMovie($name, $firstname, $email, $member, 1, $phone);
+            $rentedMovie = new RentedMovie($name, $firstname, $email, $member, $phone);
             $rentedMovie->createRent();
             header('Location: anzeigen');
         } 

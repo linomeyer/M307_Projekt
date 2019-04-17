@@ -7,16 +7,14 @@ class RentedMovie {
     public $email;
     public $telNr;
     public $fk_memberstatus;
-    public $active;
 
-    function __construct($name, $firstname, $email, $fk_memberstatus, $active, $telNr = null, $movieId = null)
+    function __construct($name, $firstname, $email, $fk_memberstatus, $telNr = null, $movieId = null)
     {
         $this->movieId = $movieId;
         $this->name = $name;
         $this->firstname = $firstname;
         $this->email = $email;
         $this->fk_memberstatus = $fk_memberstatus;
-        $this->active = $active;
         $this->telNr = $telNr;
     }
 
@@ -46,14 +44,13 @@ class RentedMovie {
     public function createRent(){
         try {
             $pdo = connectToDatabase();
-            $statement = $pdo->prepare("INSERT INTO rentmovie (`name`, firstname, email, telNr, fk_movieID, fk_memberstatus, active) VALUES (:namme, :firstname, :email, :telNr, :movieId, :memberstatus, :active)");
+            $statement = $pdo->prepare("INSERT INTO rentmovie (`name`, firstname, email, telNr, fk_movieID, fk_memberstatus) VALUES (:namme, :firstname, :email, :telNr, :movieId, :memberstatus)");
             $statement->bindParam(':namme', $name);
             $statement->bindParam(':firstname', $vorname);
             $statement->bindParam(':email', $email);
             $statement->bindParam(':telNr', $telnr);
             $statement->bindParam(':movieId', $film);
             $statement->bindParam(':memberstatus', $member);
-            $statement->bindParam(':active', $active);
             $statement->execute();
             return $pdo->lastInsertId();
         } catch(PDOException $e) {
