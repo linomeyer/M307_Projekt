@@ -14,7 +14,7 @@ if (isset($_GET['id'])) {
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (isset($_POST)) {
-            var_dump($_POST);
+
             $name = $_POST['name'] ?? '';
             $firstname = $_POST['firstname'] ?? '';
             $email = $_POST['email'] ?? '';
