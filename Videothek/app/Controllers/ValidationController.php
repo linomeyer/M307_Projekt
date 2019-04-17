@@ -14,13 +14,13 @@ function validate(string $name, string $firstname, string $email, string $phone,
     if (trim($name) === '') {
         array_push($errors, 'Nachamensfeld ist leer!');
     }
-    elseif (!preg_match($nameRegex, $name)){
+    elseif (preg_match($nameRegex, $name)){
         array_push($errors, 'Namen dürfen keine Nummern enthalten!');
     }
     if (trim($firstname) === '') {
         array_push($errors, 'Voramensfeld ist leer!');
     }
-    elseif (!preg_match($nameRegex, $firstname)){
+    elseif (preg_match($nameRegex, $firstname)){
         array_push($errors, 'Namen dürfen keine Nummern enthalten!');
     }
     if (trim($email) === '') {
