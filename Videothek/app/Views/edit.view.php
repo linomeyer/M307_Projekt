@@ -97,5 +97,6 @@
 
 <!--<script src="public/js/ausleihe-enddatum.js"></script>
 <script src="public/js/formValidation.js"></script>-->
+<script src="public/js/validation/formValidation.js"></script>
 </body>
 </html>

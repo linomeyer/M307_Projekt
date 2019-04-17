@@ -89,7 +89,6 @@
 </div>
 
 <!--<script src="public/js/ausleihe-enddatum.js"></script>-->
-<script> src="public/js/jQuery.js"</script>
 <script src="public/js/validation/formValidation.js"></script>
 </body>
 </html>

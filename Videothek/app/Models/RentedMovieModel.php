@@ -78,7 +78,7 @@ class RentedMovie {
     public function updateRent($rentid, $member){
         try {
             $pdo = connectToDatabase();
-            $statement = $pdo->prepare("UPDATE rentmovie set `name` = :namme, firstname = :firstname,fk_memberstatus = :member,  email = :email, telNr = :phone, fk_movieID = :movie WHERE id = :id");
+            $statement = $pdo->prepare("UPDATE rentmovie set `name` = :namme, firstname = :firstname,fk_memberstatus = :member  email = :email, telNr = :phone, fk_movieID = :movie WHERE id = :id");
             $statement->bindParam(':id', $rentid);
             $statement->bindParam(':movie', $this->movieId);
             $statement->bindParam(':phone', $this->telNr);

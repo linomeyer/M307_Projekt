@@ -4,7 +4,7 @@ function validate(string $name, string $firstname, string $email, string $phone,
     $errors = [];
 
     $regex = '/^[^\s@]+@[^\s@]+\.[^\s@]+$/';
-    $nameRegex = '/[0-9]/'
+    $nameRegex = '/[0-9]/';
     $allMovies = [];
     $allMemberStatuses = ['keine', 'bronze', 'silber', 'gold'];
     foreach(Movie::getAllMovieIds() as $movieId) {
