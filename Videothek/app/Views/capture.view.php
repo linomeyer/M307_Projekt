@@ -27,7 +27,9 @@
         </div>
     <?php } ?>
 
-    <ul id="errorList"></ul>
+    <div class="alert alert-danger" role="alert">
+        <ul id="errorList"></ul>
+    </div>
 
     <form method="post" id="formular">
 
@@ -88,11 +90,10 @@
         <div class="form-actions">
             <input class="btn btn-primary" type="submit" value="Absenden">
         </div>
-
     </form>
 </div>
 
-<!--<script src="public/js/ausleihe-enddatum.js"></script>
-<script src="public/js/formValidation.js"></script>-->
+<!--<script src="public/js/ausleihe-enddatum.js"></script>-->
+<script src="public/js/validation/formValidation.js"></script>
 </body>
 </html>

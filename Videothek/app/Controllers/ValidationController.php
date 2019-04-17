@@ -31,8 +31,5 @@ function validate(string $name, string $firstname, string $email, string $telefo
     if (!in_array($memberStatus, $allMemberStatuses)) {
         array_push($errors, 'Der Ausgewählte Mitgliedschaftsstatus existiert nicht!');
     }
-    if (!in_array()){
-        array_push($errors, 'Der Ausgewählte Film existiert nicht!');
-    }
     return $errors;
 }
