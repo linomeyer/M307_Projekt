@@ -60,7 +60,7 @@
             foreach($movies as $movie){
 
                 ?>
-                ['<?= $movie['title']?>', '<?= $movie['name']?>', '<?= $movie['firstname']?>', "<?= $movie['email']?>", "<?= $movie['telNr']?>", "<?= $movie['rentStart']?>", "<?= $movie['rentend']?>", "<?= $movie['rentstatus']?>", "<a href='bearbeiten?id=<?= $movie['id']?>'>Bearbeiten</a>"],
+                ['<?= $movie['title']?>', '<?= $movie['name']?>', '<?= $movie['firstname']?>', "<?= $movie['email']?>", "<?= $movie['telNr']?>", "<?= $movie['rentStart']?>", "<?= $movie['rentend']?>", "<?= $movie['rentstatus']?>", "<a href='bearbeiten?id=<?= $movie['id']?>'>Bearbeiten</a>", "<a href='loeschen?id=<?= $movie['id']?>'>Löschen</a>"],
         <?php
             }
         ?>
@@ -78,7 +78,8 @@
                 { title: "Ausleihe Start" },
                 { title: "Ausleihe Ende"},
                 {title: "Ausleihestatus"},
-                {title: "Bearbeiten"}
+                {title: "Bearbeiten"},
+                {title: "Löschen"}
             ]
         } );
     } );

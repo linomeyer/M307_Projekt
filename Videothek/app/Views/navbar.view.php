@@ -23,9 +23,6 @@
             <li class="nav-item">
                 <a class="nav-link" href="erfassen">Erfassen</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="bearbeiten">Bearbeiten</a>
-            </li>
         </ul>
     </div>
 </nav>

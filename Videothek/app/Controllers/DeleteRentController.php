@@ -1,8 +1,14 @@
-
 <?php
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        RentedMovie::deleteRent($_POST['id']);
-    }
 
-    echo "<script>window.location = 'anzeigen'</script>";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    $delete = new RentedMovie();
+    $delete->deleteRent($id);
+
+    header('Location: anzeigen');
+
+} else {
+    header('Loaction: anzeiegen');
+}
