@@ -18,14 +18,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $email = $_POST['email'] ?? '';
         $phone = $_POST['phone'] ?? '';
         $member = strtolower($_POST['member-status'] ?? '') ;
-        $video = $_POST['movie'] ?? '';
+        $movie = $_POST['movie'] ?? '1';
         $enddatum = $_POST['enddate'] ?? '';
         $rentstart = date("d.m.Y");
 
-        $errors = validate($name, $firstname, $email, $phone, $member, $video);
+        $errors = validate($name, $firstname, $email, $phone, $member, $movie);
 
         if(count($errors) === 0) {
-            $rentedMovie = new RentedMovie($name, $firstname, $email, $member, $phone);
+            $rentedMovie = new RentedMovie($name, $firstname, $email, $member, $phone, $movie);
             $rentedMovie->createRent();
             header('Location: anzeigen');
         } 

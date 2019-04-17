@@ -34,10 +34,10 @@ class Movie {
         }
     }
 
-    public function getMoviebyId(int $id){
+    public function getMovieById(int $id){
         try {
             $pdo = connectToDatabase();
-            $statement = $pdo->prepare("SELECT * FROM movie WHERE id = :id");
+            $statement = $pdo->prepare("SELECT title FROM movie WHERE id = :id");
             $statement->bindParam(':id', $id);
             $statement->execute();
             return $statement->fetch();
