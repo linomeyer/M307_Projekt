@@ -7,7 +7,8 @@ $telefon = '';
 $films = [];
 $vorname = '';
 
-$movies = Movie::getAllMovies();
+
+$movies = RentedMovie::getAllRentedMovies();
 
 
 require 'app/Views/show.view.php';

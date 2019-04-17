@@ -8,7 +8,7 @@ class RentedMovie {
     public $telNr;
     public $fk_memberstatus;
 
-    function __construct($name, $firstname, $email, $fk_memberstatus, $telNr = null, $movieId = null)
+    function __construct($name = null, $firstname = null, $email = null, $fk_memberstatus = null, $telNr = null, $movieId = null)
     {
         $this->movieId = $movieId;
         $this->name = $name;
@@ -21,15 +21,29 @@ class RentedMovie {
     static function getAllRentedMovies() {
         try {
             $pdo = connectToDatabase();
-            $statement = $pdo->prepare("SELECT * FROM rentmovie WHERE active = 1");
+            $statement = $pdo->prepare("SELECT rentmovie.*, movie.title, member.*  FROM rentmovie LEFT JOIN movie ON rentmovie.fk_movieID = movie.id LEFT JOIN member ON rentmovie.fk_memberstatus = member.status WHERE active = 1");
             $statement->execute();
-            return $statement->fetchAll();
+
+            $rentlist = $statement->fetchAll();
+            return array_map( function($rent){
+                $rent['rentend'] = date('Y.m.d', strtotime($rent['rentStart']) + (3600 * 24 * $rent['rentDuration']));
+                if(strtotime($rent['rentend']) < strtotime('today')){
+                    $rent['rentstatus'] = ':D';
+                }
+                else{
+                    $rent['rentstatus'] = ':(';
+                }
+                return $rent;
+            }, $rentlist);
+
         } catch(PDOException $e) {
             echo 'Verbindung zur DB fehlgeschlagen: ' . $e;
         }
     }
 
-    static function getRentbyId(int $movieId){
+
+
+    public function getRentbyId(int $movieId){
         try {
             $pdo = connectToDatabase();
             $statement = $pdo->prepare("SELECT * FROM rentmovie WHERE id = :id");
