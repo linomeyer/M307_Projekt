@@ -7,4 +7,6 @@ $router->define([
     'erfassen' => 'app/Controllers/CaptureController.php',
     'bearbeiten' => 'app/Controllers/EditController.php',
     'anzeigen' => 'app/Controllers/ShowController.php',
+    'bearbeiten-speichern' => 'app/Controllers/SaveEditRentController.php',
+    'loeschen' => 'app/Controllers/DeleteRentController.php',
 ]);
