@@ -7,13 +7,29 @@ $telefon = '';
 $rentStatus = '';
 $film = '';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['ausleihe'];
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    $rent = new RentedMovie();
+    $rent = $rent->getRentbyId($id);
+
+
+    $name = $rent['name'];
+    $firstname = $rent['firstname'];
+    $rentStart = $rent['rentStart'];
+    $movie = $rent['fk_movieID'];
+    $memberstatus = $rent['fk_memberstatus'];
+    $email = $rent['email'];
+    $phone = $rent['telNr'];
+
     $movies = Movie::getAllMovies();
-    $rent = RentedMovie::getRentbyId($id);
+
+    
+
 }
 else {
-    echo '<script>window.location = "anzeigen"</script>';
+    header('Location: anzeigen');
 }
 
 require 'app/Views/edit.view.php';

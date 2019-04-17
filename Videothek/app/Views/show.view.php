@@ -56,7 +56,14 @@
 
 
     var dataSet = [
+        <?php
+            foreach($movies as $movie){
 
+                ?>
+                ['<?= $movie['title']?>', '<?= $movie['name']?>', '<?= $movie['firstname']?>', "<?= $movie['email']?>", "<?= $movie['telNr']?>", "<?= $movie['rentStart']?>", "<?= $movie['rentend']?>", "<?= $movie['rentstatus']?>", "<a href='bearbeiten?id=<?= $movie['id']?>'>Bearbeiten</a>"],
+        <?php
+            }
+        ?>
     ];
 
     $(document).ready(function() {
