@@ -1,13 +1,11 @@
 <?php
-function validate(string $name, string $firstname, string $email, string $telefon, string $memberStatus, string $video): array
+function validate(string $name, string $firstname, string $email, string $telefon, string $memberStatus, int $video): array
 {
     $errors = [];
 
     $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
 
-    $movies = Movie::getAllMovies();
-
-    $allMemberStatuses = ['', 'Bronze', 'Silber', 'Gold'];
+    $allMemberStatuses = ['keine', 'bronze', 'silber', 'gold'];
 
     if (trim($name) === '') {
         array_push($errors, 'Namensfeld ist leer!');
@@ -29,9 +27,6 @@ function validate(string $name, string $firstname, string $email, string $telefo
     }
     if (preg_match("/[a-z]/i", $telefon)) {
         array_push($errors, 'Telefonnummer darf keine Alphabetischen Zeichen enthalten!');
-    }
-    if (!in_array($video, $movies)) {
-        array_push($errors, 'Der Ausgewählte Film existiert nicht!');
     }
     if (!in_array($memberStatus, $allMemberStatuses)) {
         array_push($errors, 'Der Ausgewählte Mitgliedschaftsstatus existiert nicht!');

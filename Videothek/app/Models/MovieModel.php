@@ -23,7 +23,7 @@ class Movie {
         }
     }
 
-    public function getAllMovieIds(){
+    static function getAllMovieIds(){
         try {
             $pdo = connectToDatabase();
             $statement = $pdo->prepare("SELECT id FROM movie");

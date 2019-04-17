@@ -24,14 +24,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         $errors = validate($name, $firstname, $email, $phone, $member, $video);
 
-        RentedMovie::createRent($name, $firstname, $email, $phone, $rentstart, $video, $member, $member, 1, $enddatum);
+        if(count($errors) === 0) {
+            $rentedMovie = new RentedMovie($name, $firstname, $email, $member, 1, $phone);
+            $rentedMovie->createRent();
+            header('Location: anzeigen');
+        } 
+        require 'app/Views/capture.view.php';
     }
+} else {
+    require 'app/Views/capture.view.php';
 }
-
 
 //foreach(Movie::getAllMovies() as $movie) {
 //    echo $movie['title'];
 //}
 
-require 'app/Views/capture.view.php';
 

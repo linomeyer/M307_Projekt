@@ -1,23 +1,34 @@
 <?php
 class RentedMovie {
     public $id;
-    public $rentStart;
 
     public $name;
     public $firstname;
     public $email;
     public $telNr;
     public $fk_memberstatus;
+    public $active;
 
-    function __construct($rentStart, $name, $firstname, $email, $fk_memberstatus, $telNr = null, $id = null)
+    function __construct($name, $firstname, $email, $fk_memberstatus, $active, $telNr = null, $id = null)
     {
         $this->id = $id;
-        $this->rentStart = $rentStart;
         $this->name = $name;
         $this->firstname = $firstname;
         $this->email = $email;
         $this->fk_memberstatus = $fk_memberstatus;
+        $this->active = $active;
         $this->telNr = $telNr;
+    }
+
+    static function getAllRentedMovies() {
+        try {
+            $pdo = connectToDatabase();
+            $statement = $pdo->prepare("SELECT * FROM rentmovie WHERE active = 1");
+            $statement->execute();
+            return $statement->fetchAll();
+        } catch(PDOException $e) {
+            echo 'Verbindung zur DB fehlgeschlagen: ' . $e;
+        }
     }
 
     static function getRentbyId(int $id){
@@ -32,20 +43,17 @@ class RentedMovie {
         }
     }
 
-    static function createRent(string $name, string $vorname, string $email, string $telnr, string $rentstart, int $film, string $member, bool $rentstatus, bool $active, string $rentend){
+    public function createRent(){
         try {
             $pdo = connectToDatabase();
-            $statement = $pdo->prepare("INSERT INTO rentmovie (`name`, firstname, email, telNr, rentStart, fk_movieID, fk_memberstatus, rentstatus, active, rentend) VALUES (:namme, :firstname, :email, :telNr, :rentStart, :movieId, :memberstatus, :rentstatus, :active, :rentend)");
+            $statement = $pdo->prepare("INSERT INTO rentmovie (`name`, firstname, email, telNr, fk_movieID, fk_memberstatus, active) VALUES (:namme, :firstname, :email, :telNr, :movieId, :memberstatus, :active)");
             $statement->bindParam(':namme', $name);
             $statement->bindParam(':firstname', $vorname);
             $statement->bindParam(':email', $email);
             $statement->bindParam(':telNr', $telnr);
-            $statement->bindParam(':rentStart', $rentstart);
             $statement->bindParam(':movieId', $film);
             $statement->bindParam(':memberstatus', $member);
-            $statement->bindParam(':rentstatus', $rentstatus);
             $statement->bindParam(':active', $active);
-            $statement->bindParam(':rentend', $rentend);
             $statement->execute();
             return $pdo->lastInsertId();
         } catch(PDOException $e) {

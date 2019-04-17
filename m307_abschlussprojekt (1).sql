@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Erstellungszeit: 16. Apr 2019 um 21:40
+-- Erstellungszeit: 17. Apr 2019 um 09:28
 -- Server-Version: 10.1.38-MariaDB
 -- PHP-Version: 7.3.3
 
@@ -175,10 +175,34 @@ CREATE TABLE `rentmovie` (
   `firstname` varchar(80) NOT NULL,
   `email` varchar(80) NOT NULL,
   `telNr` varchar(20) DEFAULT NULL,
-  `rentend` datetime DEFAULT NULL,
-  `rentstatus` tinyint(1) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Daten für Tabelle `rentmovie`
+--
+
+INSERT INTO `rentmovie` (`id`, `rentStart`, `fk_movieID`, `fk_memberstatus`, `name`, `firstname`, `email`, `telNr`, `active`) VALUES
+(1, '2019-04-17 08:48:58', 14, 'bronze', 'lino', 'medaf', 'fgfgad@dagasd.com', '00000000000', 1),
+(3, '2019-04-17 08:51:31', 1, 'keine', 'lino', 'medaf', 'fgfgad@dagasd.com', '00000000000', 1),
+(4, '2019-04-17 08:54:08', 1, 'keine', 'lino', 'medaf', 'fgfgad@dagasd.com', '00000000000', 1),
+(5, '2019-04-17 08:54:11', 1, 'keine', 'lino', 'medaf', 'fgfgad@dagasd.com', '00000000000', 1),
+(6, '2019-04-17 08:54:12', 1, 'keine', 'lino', 'medaf', 'fgfgad@dagasd.com', '00000000000', 1),
+(7, '2019-04-17 08:54:23', 1, 'silber', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(8, '2019-04-17 08:54:48', 1, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(9, '2019-04-17 08:56:26', 1, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(10, '2019-04-17 08:57:49', 1, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(11, '2019-04-17 08:58:01', 1, 'silber', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(12, '2019-04-17 09:00:14', 1, 'silber', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(13, '2019-04-17 09:00:16', 1, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(14, '2019-04-17 09:00:49', 1, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(15, '2019-04-17 09:01:08', 1, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(16, '2019-04-17 09:05:50', 1, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(17, '2019-04-17 09:05:59', 1, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(18, '2019-04-17 09:06:06', 1, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '', 1),
+(19, '2019-04-17 09:07:04', 14, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@g.com', '765582090', 1),
+(20, '2019-04-17 09:08:42', 95, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1),
+(21, '2019-04-17 09:11:39', 1, 'keine', 'Lino Meyer', 'Lino', 'linomeyer02@gmail.com', '765582090', 1);
 
 --
 -- Indizes der exportierten Tabellen
@@ -213,6 +237,12 @@ ALTER TABLE `rentmovie`
 --
 ALTER TABLE `movie`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+
+--
+-- AUTO_INCREMENT für Tabelle `rentmovie`
+--
+ALTER TABLE `rentmovie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints der exportierten Tabellen
