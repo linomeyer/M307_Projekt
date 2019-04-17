@@ -5,7 +5,7 @@ var inputForm = document.querySelector('#formular');
 inputForm.addEventListener("submit", function(e) {
     console.log('In Event');
     var errors = [];
-    var emailRegex = RegExp('/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/');
+    var emailRegex = RegExp("/^[^\s@]+@[^\s@]+\.[^\s@]+$/");
     var phoneRegex = RegExp('[a-z]');
     
     if (document.querySelector('#name').value.trim() == '') {
@@ -25,15 +25,17 @@ inputForm.addEventListener("submit", function(e) {
     
     console.log(errors);
     var errorList = document.querySelector('#errorList');
+    if(errors.length != 0) {
+        errorList.className = "alert alert-danger padding-left2";
+    } else {
+        errorList.className = "";
+    }
     errorList.innerText = "";
-    console.log('Empty error list');
     
     errors.forEach(function (error) {
-        console.log('Create element');
         var li = document.createElement('li');
         li.innerText = error;
-        
-        console.log('Append to errorlist');
+        li.className = "padding-left2";
         errorList.appendChild(li);
     });
 

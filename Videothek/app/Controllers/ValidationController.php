@@ -3,7 +3,7 @@ function validate(string $name, string $firstname, string $email, string $phone,
 {
     $errors = [];
 
-    $regex = '/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+    $regex = '/^[^\s@]+@[^\s@]+\.[^\s@]+$/';
     $allMovies = [];
     $allMemberStatuses = ['keine', 'bronze', 'silber', 'gold'];
     foreach(Movie::getAllMovieIds() as $movieId) {

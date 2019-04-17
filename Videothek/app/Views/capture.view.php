@@ -27,8 +27,8 @@
         </div>
     <?php } ?>
 
-    <div class="alert alert-danger" role="alert">
-        <ul id="errorList"></ul>
+    <div>
+        <ul class="errors" id="errorList"></ul>
     </div>
 
     <form method="post" id="formular">
