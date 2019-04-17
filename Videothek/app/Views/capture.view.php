@@ -79,12 +79,7 @@
                     <?php } ?>
                 </select>
             </div>
-
-            <div class="form-group">
-                <label class="form-label" for="enddate">Ausleihe Enddatum:</label>
-                <input class="form-control" type="text" id="enddate" name="enddate" readonly>
-            </div>
-
+            
         </fieldset>
 
         <div class="form-actions">
@@ -94,6 +89,7 @@
 </div>
 
 <!--<script src="public/js/ausleihe-enddatum.js"></script>-->
+<script> src="public/js/jQuery.js"</script>
 <script src="public/js/validation/formValidation.js"></script>
 </body>
 </html>
