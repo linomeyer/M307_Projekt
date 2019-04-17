@@ -19,8 +19,8 @@ function validate(string $name, string $firstname, string $email, string $telefo
     if (trim($email) === '') {
         array_push($errors, 'Emailfeld ist leer!');
     }
-    if (!preg_match($regex, $email)) {
-        array_push($errors, 'Email ist invalid!');
+    if (!preg_match($regex, strtolower($email))) {
+        array_push($errors, 'Email ist nicht gültig!');
     }
     if (strpos($email, "google.com")) {
         array_push($errors, 'google.com ist keine gültige Email!');
