@@ -41,7 +41,7 @@
 
             <div class="form-group">
                 <label for="firstname" class="form-label">Vorname:</label><p class="required-star"> *</p>
-                <input class="form-control" type="text" id="firstname" name="firstname" required value="<?= e($vorname) ?>">
+                <input class="form-control" type="text" id="firstname" name="firstname" required value="<?= e($firstname) ?>">
             </div>
 
             <div class="form-group">
@@ -51,13 +51,13 @@
 
             <div class="form-group">
                 <label class="form-label" for="phone">Telefonnummer</label>
-                <input class="form-control" type="text" id="phone" name="phone" value="<?= e($telefon) ?>">
+                <input class="form-control" type="text" id="phone" name="phone" value="<?= e($phone) ?>">
             </div>
 
             <div class="form-group">
                 <label class="form-label" for="member-status">Mitgliedschaftsstatus:</label><p class="required-star"> *</p>
                 <select class="form-control" id="member-status" name="member-status">
-                    <option value="">Keine</option>
+                    <option value="keine">Keine</option>
                     <option value="Bronze">Bronze</option>
                     <option value="Silber">Silber</option>
                     <option value="Gold">Gold</option>
@@ -72,8 +72,8 @@
             <div class="form-group">
                 <label class="form-label" for="movie">Video:</label><p class="required-star"> *</p>
                 <select class="form-control" id="movie" name="movie">
-                    <?php foreach ($films as $index => $film) { ?>
-                        <option value="<?= e($film['id']) ?>"><?= e($film['title'])?></option>
+                    <?php foreach ($movies as $index => $movie) { ?>
+                        <option value="<?= e($movie['id']) ?>"><?= e($movie['title'])?></option>
                     <?php } ?>
                 </select>
             </div>

@@ -1,13 +1,14 @@
 <?php
 require 'app/Views/navbar.view.php';
-require 'app/controllers/ValidationController.php';
+require 'app/Controllers/ValidationController.php';
 
 $movies = Movie::getAllMovies();
 
 $name = '';
-$vorname = '';
+$firstname = '';
 $email= '';
-$telefon = '';
+$phone = '';
+
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
@@ -16,8 +17,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         $firstname = $_POST['firstname'] ?? '';
         $email = $_POST['email'] ?? '';
         $phone = $_POST['phone'] ?? '';
-        $member = $_POST['memberstatus'] ?? '';
-        $video = $_POST['video'] ?? '';
+        $member = strtolower($_POST['member-status'] ?? '') ;
+        $video = $_POST['movie'] ?? '';
         $enddatum = $_POST['enddate'] ?? '';
         $rentstart = date("d.m.Y");
 

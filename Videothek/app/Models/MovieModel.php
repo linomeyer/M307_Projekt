@@ -45,4 +45,15 @@ class Movie {
             echo 'Verbindung zur DB fehlgeschlagen: ' . $e;
         }
     }
+
+    static function getAllMoviesNames() {
+        try {
+            $pdo = connectToDatabase();
+            $statement = $pdo->prepare("SELECT title FROM movie");
+            $statement->execute();
+            return $statement->fetchAll();
+        } catch(PDOException $e) {
+            echo 'Verbindung zur DB fehlgeschlagen: ' . $e;
+        }
+    }
 }
