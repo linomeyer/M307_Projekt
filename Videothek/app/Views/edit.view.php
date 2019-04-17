@@ -27,7 +27,9 @@
         </div>
     <?php } ?>
 
-    <ul id="errorList"></ul>
+    <div>
+        <ul class="errors" id="errorList"></ul>
+    </div>
 
     <form method="post" id="formular">
 
@@ -40,8 +42,8 @@
             </div>
 
             <div class="form-group">
-                <label for="name" class="form-label">Vorname:</label><p class="required-star"> *</p>
-                <input class="form-control" type="text" id="name" name="name" required value="<?= e($firstname) ?>">
+                <label for="firstname" class="form-label">Vorname:</label><p class="required-star"> *</p>
+                <input class="form-control" type="text" id="firstname" name="firstname" required value="<?= e($firstname) ?>">
             </div>
 
             <div class="form-group">
@@ -56,11 +58,11 @@
 
             <div class="form-group">
                 <label class="form-label" for="member-status">Mitgliedschaftsstatus:</label><p class="required-star"> *</p>
-                <select class="form-control" id="member-status" name="member-status" value="<?= e($memberstatus) ?>">
-                    <option value="">Keine</option>
-                    <option value="Bronze">Bronze</option>
-                    <option value="Silber">Silber</option>
-                    <option value="Gold">Gold</option>
+                <select class="form-control" id="member-status" name="member-status">
+                    <option value="Keine" <?php if($memberstatus == 'keine') {?> selected <?php }?>>Keine</option>
+                    <option value="Bronze" <?php if($memberstatus == 'bronze') {?> selected <?php }?>>Bronze</option>
+                    <option value="Silber" <?php if($memberstatus == 'silber') {?> selected <?php }?>>Silber</option>
+                    <option value="Gold" <?php if($memberstatus == 'gold') {?> selected <?php }?>>Gold</option>
                 </select>
             </div>
 
@@ -71,9 +73,9 @@
 
             <div class="form-group">
                 <label class="form-label" for="movie">Video:</label><p class="required-star"> *</p>
-                <select class="form-control" id="movie" name="movie" value="<?= e($movie) ?>">
+                <select class="form-control" id="movie" name="movie">
                     <?php foreach ($movies as $index => $film) { ?>
-                        <option value="<?= e($film['id']) ?>"><?= e($film['title'])?></option>
+                        <option value="<?= e($film['id']) ?>" <?php if($film['id'] == $movie){?> selected <?php }?>><?= e($film['title'])?></option>
                     <?php } ?>
                 </select>
             </div>

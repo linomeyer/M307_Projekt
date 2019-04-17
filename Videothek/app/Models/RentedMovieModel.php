@@ -7,6 +7,7 @@ class RentedMovie {
     public $email;
     public $telNr;
     public $fk_memberstatus;
+    public $active = 1;
 
     function __construct($name = null, $firstname = null, $email = null, $fk_memberstatus = null, $telNr = null, $movieId = null)
     {
@@ -27,6 +28,7 @@ class RentedMovie {
             $rentlist = $statement->fetchAll();
             return array_map( function($rent){
                 $rent['rentend'] = date('Y.m.d', strtotime($rent['rentStart']) + (3600 * 24 * $rent['rentDuration']));
+
                 if(strtotime($rent['rentend']) < strtotime('today')){
                     $rent['rentstatus'] = ':D';
                 }
@@ -58,13 +60,14 @@ class RentedMovie {
     public function createRent(){
         try {
             $pdo = connectToDatabase();
-            $statement = $pdo->prepare("INSERT INTO rentmovie (`name`, firstname, email, telNr, fk_movieID, fk_memberstatus) VALUES (:namme, :firstname, :email, :telNr, :movieId, :memberstatus)");
-            $statement->bindParam(':namme', $name);
-            $statement->bindParam(':firstname', $vorname);
-            $statement->bindParam(':email', $email);
-            $statement->bindParam(':telNr', $telnr);
-            $statement->bindParam(':movieId', $film);
-            $statement->bindParam(':memberstatus', $member);
+            $statement = $pdo->prepare("INSERT INTO rentmovie (`name`, firstname, email, telNr, fk_movieID, fk_memberstatus, active) VALUES (:namme, :firstname, :email, :telNr, :movieId, :memberstatus, :active)");
+            $statement->bindParam(':namme', $this->name);
+            $statement->bindParam(':firstname', $this->firstname);
+            $statement->bindParam(':email', $this->email);
+            $statement->bindParam(':telNr', $this->telNr);
+            $statement->bindParam(':movieId', $this->movieId);
+            $statement->bindParam(':memberstatus', $this->fk_memberstatus);
+            $statement->bindParam(':active', $this->active);
             $statement->execute();
             return $pdo->lastInsertId();
         } catch(PDOException $e) {
@@ -72,21 +75,17 @@ class RentedMovie {
         }
     }
 
-    public function updateRent(){
+    public function updateRent($rentid, $member){
         try {
             $pdo = connectToDatabase();
-            $statement = $pdo->prepare("UPDATE rentmovie set `name` = :namme, 
-                                        firstname = :firstname, 
-                                        email = :email,
-                                        telNr = :phone,
-                                        fk_movieID = :movie,
-                                        WHERE id = :id");
-            $statement->bindParam(':id', $movieId);
-            $statement->bindParam(':movie', $movie);
-            $statement->bindParam(':phone', $phone);
-            $statement->bindParam(':email', $email);
-            $statement->bindParam(':firstname', $firstname);
-            $statement->bindParam(':namme', $name);
+            $statement = $pdo->prepare("UPDATE rentmovie set `name` = :namme, firstname = :firstname,fk_memberstatus = :member,  email = :email, telNr = :phone, fk_movieID = :movie WHERE id = :id");
+            $statement->bindParam(':id', $rentid);
+            $statement->bindParam(':movie', $this->movieId);
+            $statement->bindParam(':phone', $this->telNr);
+            $statement->bindParam(':email', $this->email);
+            $statement->bindParam(':firstname', $this->firstname);
+            $statement->bindParam(':namme', $this->name);
+            $statement->bindParam(':member', $member);
 
             $statement->execute();
 
@@ -95,7 +94,7 @@ class RentedMovie {
         }
     }
 
-    static function deleteRent(int $movieId){
+    public function deleteRent(int $movieId){
         try {
             $pdo = connectToDatabase();
             $statement = $pdo->prepare("ALTER TABLE rentmovie SET active = 0 WHERE id = :id");
