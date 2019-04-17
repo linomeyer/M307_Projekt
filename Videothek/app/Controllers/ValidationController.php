@@ -4,7 +4,7 @@ function validate(string $name, string $firstname, string $email, string $phone,
     $errors = [];
 
     $regex = '/^[^\s@]+@[^\s@]+\.[^\s@]+$/';
-    $nameRegex = '/[0-9]/'
+    $nameRegex = '/[0-9]/';
     $allMovies = [];
     $allMemberStatuses = ['keine', 'bronze', 'silber', 'gold'];
     foreach(Movie::getAllMovieIds() as $movieId) {
@@ -14,14 +14,14 @@ function validate(string $name, string $firstname, string $email, string $phone,
     if (trim($name) === '') {
         array_push($errors, 'Nachamensfeld ist leer!');
     }
-    elseif (strlen($name) <= 2) {
-        array_push($errors, 'Der Name muss länger als 2 Zeichen sein!');
-    }
-    elseif (preg_match($nameRegex)){
+    elseif (!preg_match($nameRegex, $name)){
         array_push($errors, 'Namen dürfen keine Nummern enthalten!');
     }
     if (trim($firstname) === '') {
         array_push($errors, 'Voramensfeld ist leer!');
+    }
+    elseif (!preg_match($nameRegex, $firstname)){
+        array_push($errors, 'Namen dürfen keine Nummern enthalten!');
     }
     if (trim($email) === '') {
         array_push($errors, 'Emailfeld ist leer!');
